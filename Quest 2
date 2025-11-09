@@ -1,0 +1,13 @@
+#Part 1
+ori = val = [164,55]
+print("cycle 0 output: ")
+print(val)
+for i in range (2):
+  print("loop " + str(i))
+  mlt_val = [(val[0] * val[0]) - (val[1] * val[1]), (val[0] * val[1]) + (val[1] * val[0])]
+  print(mlt_val)
+  div_val = [mlt_val[0] // 10, mlt_val[1] // 10]
+  print(div_val)
+  val = [div_val[0] + ori[0], div_val[1] + ori[1]]
+  print("cycle " + str(i + 1) + " output: ")
+  print(val)
