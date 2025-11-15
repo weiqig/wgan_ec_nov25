@@ -1,0 +1,50 @@
+#Part 1
+s= "ABCBCBBcBcbBaAaaAbAaaCAcBCaAbccAABcCaCcAbcCAaCBBbBBBaAAaAcbbCAAAbcbaABbcCaaaCCacbcCBBBAcCbCbcCCbbbbC"
+target = ""
+mentor = 0
+novice = 0
+combination = 0
+
+for i in range(len(s)):
+  if s[i] == 'A':
+    novice += 1
+    target += s[i]
+  elif s[i] == 'a':
+    mentor += 1
+    target += s[i]
+
+#print(target)
+#print("Mentors: " + str(mentor) + " Novice: " + str(novice))
+
+for i in range(len(target)):
+  if target[i] == 'A':
+    for j in range (len(target)):
+        if ( j + i < len(target) and target[j + i] == 'a'):
+          combination += 1
+
+print(combination)
+
+#Part 2
+#using match case while also iterating through whole string, quite inefficient
+
+def check_mentor(profession, index):
+    match profession:
+        case 'A':
+            return(count_novice('a', index))
+        case 'B':
+            return(count_novice('b', index))
+        case 'C':
+            return(count_novice('c', index))
+        case _:
+            print(profession + " is an invalid profession")
+
+def count_novice(novice, index):
+    total = 0
+    for i in range (len(s)):
+        if (i + index < len(s) and s[i + index] == novice):
+            total += 1
+    return (total)
+
+for i in range(len(s)):
+    if s[i] in p:
+        combination += check_mentor(s[i], i)
