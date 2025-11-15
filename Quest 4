@@ -1,0 +1,14 @@
+#Part 1
+#For the following solutions we assume that since we only care about the output for the first and last gear,
+#we will only use the first and last gear to calculate the number of rotations made by the aforementioned gears.
+
+my_list = [1000, 149]
+rotations = 2025
+
+result = (my_list[0] / my_list[-1]) * rotations
+
+#Part 2
+rotations = 10000000000000
+
+# plus 1 to the final output to account for a full turn for minimum amount of turns
+result = 1 + (1 / (my_list[0] / my_list[-1])) * rotations
