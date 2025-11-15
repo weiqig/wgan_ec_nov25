@@ -1,0 +1,11 @@
+#Part 1
+#The string is considered to pass the center if the absolute difference between the current pin and the next pin is equal to half the number of pins
+seq = (1,32,4,20,8)
+pins = 32
+count = 0
+
+for i in range (len(seq) - 1):
+    next_pin = seq[i + 1]
+    if (abs(seq[i] - next_pin) == pins / 2):
+        count += 1
+print(count)
