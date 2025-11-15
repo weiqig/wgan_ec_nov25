@@ -1,0 +1,62 @@
+#Part 1
+#This seems overly long, there is probably a way better method of doing this
+
+s = ("Drakcarth","Drakendris","Zalthys","Drakthys","Azcarth","Zalcarth","Azendris","Zalendris","Azthys")
+
+set = ['i','d','D','c','l','n','r','k','y','h','z','e','a','A','Z','t']
+
+def containsAny(str, set):
+    """ Check whether sequence str contains ANY of the items in set. """
+    return 1 in [c in str for c in set]
+
+def match_rules(c1, c2):
+    match c1:
+        case 'i':
+            return (c2 == 's')
+        case 'd':
+            return (c2 == 'r')
+        case 'D':
+            return (c2 == 'r')
+        case 'c':
+            return (c2 == 'a')
+        case 'l':
+            return (c2 in ['e','c','t'])
+        case 'n':
+            return (c2 == 'd')
+        case 'r':
+            return (c2 in ['i','t','b'])
+        case 'k':
+            return (c2 in ['e','c','t'])
+        case 'y':
+            return (c2 == 's')
+        case 'h':
+            return (c2 == 'y')
+        case 'z':
+            return (c2 in ['e','b'])
+        case 'e':
+            return (c2 == 'n')
+        case 'a':
+            return (c2 in ['b','r','k'])
+        case 'A':
+            return (c2 == 'z')
+        case 'Z':
+            return (c2 == 'a')
+        case 't':
+            return (c2 == 'h')
+        case _:
+            return True
+
+for i in range (len(s)):
+    if (containsAny(s[i], set)):
+        for j in range(len(s[i])):
+            if (j + 1 >= len(s[i])):
+                print(s[i])
+            elif (match_rules(s[i][j], s[i][j + 1]) == False):
+                break
+
+#Part 2
+#Declare new variable to hold total sum of indices; add onto total when j equals length of current word
+
+total = 0
+total += i + 1
+
